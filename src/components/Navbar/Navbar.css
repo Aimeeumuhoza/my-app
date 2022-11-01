@@ -1,0 +1,27 @@
+.container{
+    background-color:black;
+    height: 90px;
+}
+.textContainer{
+    display: flex;
+    margin-right: 30px;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+.button{
+    margin-left: 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    color: white;
+    background-color:black;
+    font-weight: 600;
+    padding: 7px;
+}
+.button:hover{
+    background-color: rgb(15, 41, 65);
+}
+.searchContainer{
+    margin-right: 100px;
+    width: 350px;
+}
