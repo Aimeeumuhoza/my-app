@@ -28,7 +28,7 @@ const Content = () =>{
     </section>
     </div>
     <div className="table">
-    <table >
+    <table style={{border:"collapse"}}>
         <tr>
             <td style={{width:"50%"}} ><p><i>You all know us. And we all 
                 know you. We are getting married lorem 

@@ -1,54 +1,56 @@
 import axios from "axios";
+
 import React, {useState} from "react";
 import "./register.css"
 function Register() {
     const [isSubmitted] = useState(false);
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [ password, setPassword] = useState("")
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [ line, setLine] = useState("")
+   console.log(title,description,line);
+    const addData = async (e) =>{
+      e.preventDefault()
 
-    const addData = async () =>{
       try {
-        await axios.post("https://ecommerc-eba.herokuapp.com/api/user/register",
-        {username,email,password})
+       const res =await axios.post("https://react-native-crud-ild2wrqjd-yschristian7-gmailcom.vercel.app/bible/create",
+        {title,description,line}) 
+        console.log(res.data);
       } catch (error) {
         console.log(error);
       }  
-      
-
+    
     }
-
 const renderForm = (
     <div className="app">
-      <form onSubmit>
+      <form >
         <div className="input-container">
-          <label>username </label>
+          <label>title </label>
 
           <input 
           type="text" 
-          name="uname" 
-          value={username}
-          onChange={(e) => setUsername(e.target.value) }
+
+          value={title}
+          onChange={(e) => setTitle(e.target.value) }
           />
     
         </div>
         <div className="input-container">
-          <label>email</label>
+          <label>description</label>
           <input
-           type="email"
-           name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
+           type="text"
+           
+          value={description}
+          onChange={(e) => setDescription(e.target.value)} 
             />
     
         </div>
         <div className="input-container">
-          <label>password </label>
+          <label>line </label>
           <input 
-          type="password"
-           name="pass"
-           value={password}
-           onChange = {(e) => setPassword(e.target.value)}
+          type="text"
+          
+           value={line}
+           onChange = {(e) => setLine(e.target.value)}
            />
           
         </div>

@@ -1,16 +1,24 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import React, {useState,useEffect} from "react";
+import update from "./update";
 import "./about.css"
 const About = () =>{
     const [data , setData] =  useState([])
+
+    const deleteData=async (id)=> {
+        await axios.delete( 'https://react-native-crud-ild2wrqjd-yschristian7-gmailcom.vercel.app/bible/deleteVerse/'+id )
+    }
 
     useEffect(() =>{
         const getData = async() =>{
             const res = await axios.get("https://react-native-crud-ild2wrqjd-yschristian7-gmailcom.vercel.app/bible/allVerse")
     setData([...res.data.bible])
         }
-        getData()
-    },[])
+        getData();
+       
+    },[deleteData])
+ 
     const itlo = localStorage.getItem("email")
     // console.log(data);
     return(
@@ -20,7 +28,7 @@ const About = () =>{
                 <table>
                     <tr>
                         <th>Title</th>
-                        <th>descriprion</th>
+                        <th>description</th>
                         <th>line</th>
                         <th colspan="2">Action</th>
                     </tr>
@@ -29,8 +37,12 @@ const About = () =>{
                         <td>{u.title} </td>
                         <td>{u.description}</td>
                         <td>{u.line}</td> 
-                        <td><button>delete</button> </td>
-                        <td><button>update</button>  </td>
+                        <td><button onClick={()=>deleteData(u._id)}>delete</button>
+                    <Link to={"/update/"+u._id}>
+                        <button>update</button>
+                    </Link>
+                         </td>
+                        
                     </tr>
                     )):<span>loading ......</span> :<span>there is no data</span>
                     }
@@ -38,7 +50,8 @@ const About = () =>{
                 </table>
             </div>
         </div>
-    )
+    );
 }
+
 
 export default About

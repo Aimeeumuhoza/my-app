@@ -3,6 +3,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/login/login";
 import {BrowserRouter  as Router, Routes, Route} from "react-router-dom"
 import About from "./pages/about/about";
+import Update from "./pages/about/update";
 
 const App  =() => {
 
@@ -13,7 +14,7 @@ const App  =() => {
                 <Route path ="/register" element={<Register/>}/>
                 <Route path ="/login" element={<Login/>}/>
                 <Route path ="/about" element={<About/>}/>
-
+                <Route path ="/update/:_id" element={<Update/>}/>
             </Routes>
          </Router>
 );
